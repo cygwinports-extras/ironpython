@@ -1,0 +1,64 @@
+ironpython
+------------------------------------------
+IronPython is a new implementation of the Python programming language 
+running on .NET. It supports an interactive console with fully dynamic 
+compilation. It is well integrated with the rest of the .NET Framework 
+and makes all .NET libraries easily available to Python programmers, 
+while maintaining full compatibility with the Python language.
+
+Runtime requirements:
+  cygwin-1.5.24-2
+  mono-1.2.3.1-1
+
+Build requirements:
+  cygwin-1.5.24-2
+  cygport-0.2.10-1
+  make-3.81-1
+  mono-1.2.3.1-1
+
+Canonical website:
+  http://www.codeplex.com/IronPython/
+
+Canonical download:
+  http://www.codeplex.com/IronPython/Release/ProjectReleases.aspx
+
+-------------------------------------------
+
+Build instructions:
+  unpack ironpython-1.0.1-X-src.tar.bz2
+    if you use setup to install this src package, it will be
+	 unpacked under /usr/src automatically
+  cd /usr/src
+  cygport ./ironpython-1.0.1-X.cygport all
+
+This will create:
+  /usr/src/ironpython-1.0.1-X-src.tar.bz2
+  /usr/src/ironpython-1.0.1-X.tar.bz2
+
+-------------------------------------------
+
+Files included in the binary package:
+
+  /usr/bin/ipy
+  /usr/bin/ipyw
+  /usr/lib/ironpython/IronMath.dll
+  /usr/lib/ironpython/IronPython.dll
+  /usr/lib/ironpython/Lib/site.py
+  /usr/lib/ironpython/ipy.exe
+  /usr/lib/ironpython/ipyw.exe
+  /usr/share/doc/Cygwin/ironpython-1.0.1.README
+  /usr/share/doc/ironpython-1.0.1/FAQ.html
+  /usr/share/doc/ironpython-1.0.1/License.html
+  /usr/share/doc/ironpython-1.0.1/Readme.html
+
+------------------
+
+Port Notes:
+
+----- version 1.0.1-1 -----
+Initial release for Cygwin.
+Includes patches from FePy project.
+
+
+Cygwin port maintained by:
+http://cygwinports.dotsrc.org/

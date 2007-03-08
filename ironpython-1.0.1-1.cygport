@@ -1,0 +1,40 @@
+inherit python mono
+
+DESCRIPTION=".NET Python implementation"
+HOMEPAGE="http://www.codeplex.com/IronPython"
+SRC_URI="IronPython-${PV}-src.zip"
+for p in base64-slash compile-co-filename file-canseek mono-console \
+		 mono-makefile open-unknown-mode re-lastgroup set-func-name \
+		 unicodeerror-object
+do
+	PATCH_URI+=" https://svn.sourceforge.net/svnroot/fepy/trunk/patches/${PV}/patch-ironpython-${p}"
+done
+
+RESTRICT="fetch"
+SRC_DIR="IronPython-${PV}"
+
+src_compile() {
+	lndirs
+	cd ${B}/Src
+	cygmake
+}
+
+src_install() {
+	cd ${B}
+	exeinto /usr/lib/${PN}
+	doexe *.exe *.dll
+
+	mono_wrapper ipy /usr/lib/${PN}/ipy.exe
+	mono_wrapper ipyw /usr/lib/${PN}/ipyw.exe
+
+	dodir /usr/lib/${PN}/Lib
+	cat >> ${D}/usr/lib/${PN}/Lib/site.py <<-_EOF
+		import sys
+		sys.path.append("${PYTHON_LIB}")
+		sys.path.append("${PYTHON_LIB}/lib-dynload")
+		sys.path.append("${PYTHON_SITELIB}")
+		sys.path.append("${PYTHON_SITELIB}/gtk-2.0")
+		_EOF
+
+	dodoc *.html
+}
