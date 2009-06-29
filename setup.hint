@@ -1,5 +1,5 @@
 category: Dotnet Python
-requires: cygwin mono
+requires: mono
 sdesc: ".NET Python implementation"
 ldesc: "IronPython is a new implementation of the Python programming 
 language running on .NET. It supports an interactive console with fully 
